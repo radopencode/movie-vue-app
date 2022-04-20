@@ -13,10 +13,24 @@
     <router-link>to="/login">Login</router-link>
     |
     <router-link>to="/logout>Logout</router-link>
+    <span v-if="isLoggedIn()">
+      <router-link to="/logout">Logout</router-link>
+    </span>
+    <span v-else>
+      <router-link to="/signup">Signup</router-link>
+      <router-link to="/login">Login</router-link>
+    </span>
   </nav>
   <router-view />
 </template>
 
+<script>
+methods: {
+  isLoggedIn: function() {
+    return localStorage.getItem('jwt');
+  }
+}
+</script>
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
